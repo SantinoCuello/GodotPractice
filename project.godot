@@ -15,6 +15,10 @@ run/main_scene="uid://dat0o8ygositg"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Musica="*res://scenes/musica.tscn"
+
 [input]
 
 salto={

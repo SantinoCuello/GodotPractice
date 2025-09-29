@@ -1,5 +1,6 @@
-[gd_scene load_steps=20 format=3 uid="uid://dat0o8ygositg"]
+[gd_scene load_steps=22 format=3 uid="uid://dat0o8ygositg"]
 
+[ext_resource type="Script" uid="uid://5vah7tvkc6wx" path="res://scripts/game_manager.gd" id="1_5g1u2"]
 [ext_resource type="PackedScene" uid="uid://0fsq7ebk2ete" path="res://scenes/player.tscn" id="1_x4n2o"]
 [ext_resource type="Texture2D" uid="uid://c232w1wt0lga0" path="res://assets/sprites/world_tileset.png" id="2_uc3sl"]
 [ext_resource type="PackedScene" uid="uid://be06ovys61eur" path="res://scenes/plataforma.tscn" id="3_2ka1k"]
@@ -7,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b8rq6adcu6ig2" path="res://scenes/kill_zone.tscn" id="5_iq6uk"]
 [ext_resource type="PackedScene" uid="uid://b2tn14xqcr6au" path="res://scenes/slime.tscn" id="6_ervc2"]
 [ext_resource type="FontFile" uid="uid://lcrdby2fjmbo" path="res://assets/fonts/PixelOperator8.ttf" id="7_ebtnq"]
+[ext_resource type="FontFile" uid="uid://gmsxp00yj84f" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="9_mlgrx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2ka1k"]
 texture = ExtResource("2_uc3sl")
@@ -293,6 +295,20 @@ _data = {
 
 [node name="Juego" type="Node2D"]
 
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_5g1u2")
+
+[node name="EtiquetaPuntaje" type="Label" parent="GameManager"]
+offset_left = 185.0
+offset_top = -254.0
+offset_right = 343.0
+offset_bottom = -207.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("9_mlgrx")
+theme_override_font_sizes/font_size = 8
+text = "Conseguiste x monedas"
+
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(0, -1)
 tile_set = SubResource("TileSet_pew7j")
@@ -391,11 +407,31 @@ autoplay = "movimiento"
 [node name="Slime" parent="." instance=ExtResource("6_ervc2")]
 position = Vector2(360, 5)
 
-[node name="Label" type="Label" parent="."]
-visible = false
-offset_left = -140.0
-offset_top = -43.0
-offset_right = 104.0
-offset_bottom = 13.0
+[node name="Labels" type="Node" parent="."]
+
+[node name="Label" type="Label" parent="Labels"]
+offset_left = -155.0
+offset_top = -47.0
+offset_right = -33.0
 theme_override_fonts/font = ExtResource("7_ebtnq")
+theme_override_font_sizes/font_size = 8
 text = "Espacio para saltar"
+
+[node name="Label2" type="Label" parent="Labels"]
+offset_left = 183.0
+offset_top = 55.0
+offset_right = 305.0
+offset_bottom = 102.0
+theme_override_fonts/font = ExtResource("7_ebtnq")
+theme_override_font_sizes/font_size = 8
+text = "Morir duele..."
+
+[node name="Label3" type="Label" parent="Labels"]
+offset_left = 230.0
+offset_top = -275.0
+offset_right = 352.0
+offset_bottom = -228.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_ebtnq")
+theme_override_font_sizes/font_size = 8
+text = "Llegaste!"
